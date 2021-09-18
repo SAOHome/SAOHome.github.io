@@ -1,34 +1,77 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# OSX
+#
+**/.DS_Store
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Xcode
+#
+**/build/
+**/*.pbxuser
+**/!default.pbxuser
+**/*.mode1v3
+**/!default.mode1v3
+**/*.mode2v3
+**/!default.mode2v3
+**/*.perspectivev3
+**/!default.perspectivev3
+**/xcuserdata
+**/*.xccheckout
+**/*.moved-aside
+**/DerivedData
+**/*.hmap
+**/*.ipa
+**/*.xcuserstate
+**/project.xcworkspace
 
-# testing
-/coverage
+# Android/IntelliJ
+#
+**/.idea
+**/.gradle
+**/local.properties
+**/*.iml
 
-# next.js
-/.next/
-/out/
+# node.js
+#
+**/node_modules/
+**/npm-debug.log
+**/yarn-error.log
 
-# production
-/build
+# BUCK
+**/buck-out/
+**/\.buckd/
+**/*.keystore
 
-# misc
-.DS_Store
-*.pem
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
 
-# local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Bundle artifact
+**/*.jsbundle
 
-# vercel
-.vercel
+**/ios/Pods/
+
+**/android/app/release/
+**/android/app/src/main/assets/
+
+# next
+**/.next/
+
+# sublime--project
+**/*.sublime-project
+**/*.sublime-workspace
+
+# next out
+**/out/
+
+# next .env
+**/.env
+
+# rn .hprof
+**/android/*.hprof
+

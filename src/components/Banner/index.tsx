@@ -51,7 +51,7 @@ const Banner: React.FC<BannerProps> = ({
 
   return (
     <div className="flex flex-col mb-8">
-      <div className="flex overflow-wrap-anywhere text-yellow-300 text-4xl border-dashed border-b-2 mb-16 min-h-3rem">
+      <div className="flex overflow-wrap-anywhere text-yellow-300 text-4xl border-dashed border-b-2 min-h-3rem mb-4 lg:mb-16">
         {bannerTitle}
       </div>
       <div className="aspect-w-16 aspect-h-9 bg-gray-200">

@@ -47,7 +47,10 @@ export type TitleImageNameType = {
   imageName: string
 }
 
-export type TitleImageNameListType = {
+export type TitleSubTitleImageNameType = {
   title: string
+  subTitle: string
   imageName: string
 }
+export type TitleSubTitleImageNameListType =
+  Array<TitleSubTitleImageNameType>

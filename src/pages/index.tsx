@@ -7,11 +7,13 @@ import {
 
 import type {
   TitleImageNameType,
-  TitleImageNameListType,
+  TitleSubTitleImageNameType,
+  TitleSubTitleImageNameListType,
 } from '@other-support/Types'
 
 import Banner from '@components/Banner'
 import ItemListContainer from '@components/ItemListContainer'
+import Footer from '@components/Footer'
 
 const Home: React.FC = () => {
   const [banner, setBanner] = React.useState<
@@ -19,8 +21,8 @@ const Home: React.FC = () => {
   >(undefined)
 
   const [items, setItems] =
-    React.useState<TitleImageNameListType>(
-      Array<TitleImageNameType>()
+    React.useState<TitleSubTitleImageNameListType>(
+      Array<TitleSubTitleImageNameType>()
     )
 
   React.useEffect(() => {
@@ -57,10 +59,13 @@ const Home: React.FC = () => {
   }, [items])
 
   return (
-    <div className="flex justify-center h-full h-screen p-4 bg-green-700">
-      <div className="flex flex-col h-full w-full lg:max-w-4xl h-64 p-4 overflow-y-scroll overflow-x-hidden">
-        {bannerContent}
-        {itemListContainer}
+    <div className="flex flex-col items-center h-full h-screen p-4 bg-green-700 overflow-y-scroll ">
+      <div className="flex flex-col h-full w-full lg:max-w-4xl h-64 p-4">
+        <div className="min-height-600 ">
+          {bannerContent}
+          {itemListContainer}
+          <Footer />
+        </div>
       </div>
     </div>
   )

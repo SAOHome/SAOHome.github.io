@@ -47,14 +47,14 @@ const Banner: React.FC<BannerProps> = ({
     }
 
     return banner.title
-  }, banner)
+  }, [banner])
 
   return (
     <div className="flex flex-col mb-8">
-      <div className="flex overflow-wrap-anywhere text-yellow-300 text-4xl border-dashed border-b-2 mb-16 min-h-4rem">
+      <div className="flex overflow-wrap-anywhere text-yellow-300 text-4xl border-dashed border-b-2 mb-16 min-h-3rem">
         {bannerTitle}
       </div>
-      <div className="aspect-w-16 aspect-h-9 bg-blue-400">
+      <div className="aspect-w-16 aspect-h-9 bg-gray-200">
         {imageUrl && (
           <img
             className="w-full h-full object-cover"

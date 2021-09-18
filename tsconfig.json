@@ -27,7 +27,8 @@
       "@containers/*": ["containers/*"],
       "@firebase-folder/*": ["firebase-folder/*"],
       "@other-support/*": ["other-support/*"],
-      "@redux-folder/*": ["redux-folder/*"]
+      "@redux-folder/*": ["redux-folder/*"],
+      "@styles/*": ["styles/*"]
     }
   },
   "include": [

@@ -5,6 +5,7 @@ const nextConfig = {
     NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: 'saogithubpage-79366.firebaseapp.com',
     NEXT_PUBLIC_FIREBASE_DATABASE_URL: 'https://saogithubpage-79366-default-rtdb.firebaseio.com',
     NEXT_PUBLIC_FIREBASE_PROJECT_ID: 'saogithubpage-79366',
+    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: 'saogithubpage-79366.appspot.com',
   },
   experimental: {
     jsconfigPaths: true, // enables it for both jsconfig.json and tsconfig.json

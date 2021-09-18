@@ -1,10 +1,16 @@
 import { initializeApp } from 'firebase/app'
 import {
   getDatabase,
-  ref,
+  ref as databaseRef,
   child,
   get,
 } from 'firebase/database'
+
+import {
+  getStorage,
+  ref as storageRef,
+  getDownloadURL,
+} from 'firebase/storage'
 
 import {
   getAuth,
@@ -23,6 +29,9 @@ const firebaseConfig = {
     process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
   projectId:
     process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket:
+    process.env
+      .NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
 }
 
 // Initialize Firebase
@@ -30,7 +39,7 @@ const firebase = initializeApp(firebaseConfig)
 
 const getRealTimeData =
   async (): Promise<StringKeyObject> => {
-    const dbRef = ref(getDatabase())
+    const dbRef = databaseRef(getDatabase())
 
     const snapshot = await get(child(dbRef, '/'))
 
@@ -91,17 +100,45 @@ export const signInThenGetRealTimeData = async ({
 
 export const getPublicRealTimeData =
   async (): Promise<StringKeyObject> => {
-    const dbRef = ref(getDatabase())
+    try {
+      const dbRef = databaseRef(getDatabase())
 
-    const snapshot = await get(
-      child(dbRef, '/public')
+      const snapshot = await get(
+        child(dbRef, '/public')
+      )
+
+      if (!snapshot.exists()) {
+        throw new Error('snapshot not exists')
+      }
+
+      const data = snapshot.val()
+
+      return data
+    } catch (err) {
+      throw new Error(
+        'getPublicRealTimeData failed'
+      )
+    }
+  }
+
+export const getStorageImageURL = async ({
+  imageName,
+}: {
+  imageName: string
+}): Promise<string> => {
+  try {
+    const storage = getStorage()
+
+    const imageUrl = await getDownloadURL(
+      storageRef(storage, imageName)
     )
 
-    if (!snapshot.exists()) {
-      throw new Error('snapshot not exists')
-    }
-
-    const data = snapshot.val()
-
-    return data
+    return imageUrl
+  } catch (err) {
+    console.log(
+      'getStorageImageURL err: ',
+      err.message
+    )
+    throw new Error('getStorageImageURL failed')
   }
+}

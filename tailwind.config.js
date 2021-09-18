@@ -6,10 +6,17 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    minHeight: {
+     '0': '0',
+     '4rem': '4rem',
+     'full': '100%',
+    },
     extend: {},
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }

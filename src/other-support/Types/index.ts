@@ -41,3 +41,13 @@ export type GidAndNameType = {
   gid: string
   name: string
 }
+
+export type TitleImageNameType = {
+  title: string
+  imageName: string
+}
+
+export type TitleImageNameListType = {
+  title: string
+  imageName: string
+}

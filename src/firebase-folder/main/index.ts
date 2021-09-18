@@ -88,3 +88,20 @@ export const signInThenGetRealTimeData = async ({
 
   return realTimeData
 }
+
+export const getPublicRealTimeData =
+  async (): Promise<StringKeyObject> => {
+    const dbRef = ref(getDatabase())
+
+    const snapshot = await get(
+      child(dbRef, '/public')
+    )
+
+    if (!snapshot.exists()) {
+      throw new Error('snapshot not exists')
+    }
+
+    const data = snapshot.val()
+
+    return data
+  }

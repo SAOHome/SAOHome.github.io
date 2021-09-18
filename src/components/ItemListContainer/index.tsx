@@ -1,7 +1,7 @@
 import React from 'react'
 
 import type {
-  // TitleImageNameType,
+  TitleSubTitleImageNameType,
   TitleSubTitleImageNameListType,
 } from '@other-support/Types'
 
@@ -22,11 +22,17 @@ const ItemListContainer: React.FC<ItemListContainerProps> =
 
       return (
         <div>
-          {items.map(item => (
-            <ItemListContainerEachUnit
-              item={item}
-            />
-          ))}
+          {items.map(
+            (
+              item: TitleSubTitleImageNameType,
+              index: number
+            ) => (
+              <ItemListContainerEachUnit
+                key={`item-list-unit-${index}`}
+                item={item}
+              />
+            )
+          )}
         </div>
       )
     }, [items])

@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 import type { TitleSubTitleImageNameType } from '@other-support/Types'
 
@@ -68,9 +69,11 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
         <div className="flex w-full md:flex-2 lg:flex-2 lg:justify-center mr-4">
           <div className="w-full aspect-w-16 aspect-h-9 bg-gray-200">
             {imageUrl && (
-              <img
+              <Image
+                alt="item-list-unit-image"
                 className="w-full h-full object-cover"
                 src={imageUrl}
+                layout="fill"
               />
             )}
           </div>

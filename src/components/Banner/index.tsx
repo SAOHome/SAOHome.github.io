@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 import type { TitleImageNameType } from '@other-support/Types'
 
@@ -56,9 +57,11 @@ const Banner: React.FC<BannerProps> = ({
       </div>
       <div className="aspect-w-16 aspect-h-9 bg-gray-200">
         {imageUrl && (
-          <img
+          <Image
+            alt="banner-image"
             className="w-full h-full object-cover"
             src={imageUrl}
+            layout="fill"
           />
         )}
       </div>

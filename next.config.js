@@ -28,7 +28,7 @@ const nextConfig = {
   },
   images: {
     loader: "imgix",
-     path: "",
+    path: "",
     domains: ['firebasestorage.googleapis.com']
   }
 }

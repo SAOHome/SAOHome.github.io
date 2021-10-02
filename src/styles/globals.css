@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .overflow-wrap-anywhere {
   overflow-wrap: anywhere;  
 }

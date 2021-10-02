@@ -1,16 +1,14 @@
 import React from 'react'
 
 import type {
-  TitleSubTitleImageNameType,
-  TitleSubTitleImageNameListType,
+  TitleSubTitleImagesType,
+  TitleSubTitleImagesListType,
 } from '@other-support/Types'
 
 import ItemListContainerEachUnit from '@components/ItemListContainerEachUnit'
 
 interface ItemListContainerProps {
-  items:
-    | TitleSubTitleImageNameListType
-    | undefined
+  items: TitleSubTitleImagesListType | undefined
 }
 
 const ItemListContainer: React.FC<ItemListContainerProps> =
@@ -24,7 +22,7 @@ const ItemListContainer: React.FC<ItemListContainerProps> =
         <div>
           {items.map(
             (
-              item: TitleSubTitleImageNameType,
+              item: TitleSubTitleImagesType,
               index: number
             ) => (
               <ItemListContainerEachUnit

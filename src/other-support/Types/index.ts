@@ -42,6 +42,10 @@ export type GidAndNameType = {
   name: string
 }
 
+export type TitleType = {
+  title: string
+}
+
 export type TitleImageNameType = {
   title: string
   imageName: string
@@ -52,5 +56,23 @@ export type TitleSubTitleImageNameType = {
   subTitle: string
   imageName: string
 }
+
 export type TitleSubTitleImageNameListType =
   Array<TitleSubTitleImageNameType>
+
+export type ImageNameObject = {
+  imageName?: string
+}
+
+export type ImageNameObjectListType =
+  ImageNameObject[]
+
+export type TitleSubTitleImagesType = {
+  title: string
+  subTitle: string
+  text: string
+  images: ImageNameObjectListType
+}
+
+export type TitleSubTitleImagesListType =
+  TitleSubTitleImagesType[]

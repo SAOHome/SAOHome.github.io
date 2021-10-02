@@ -1,12 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 
-import type { TitleSubTitleImageNameType } from '@other-support/Types'
+import type {
+  TitleSubTitleImagesType,
+  // ImageNameObjectListType,
+} from '@other-support/Types'
 
 import { getStorageImageURL } from '@firebase-folder/main'
 
 interface ItemListContainerEachUnitProps {
-  item: TitleSubTitleImageNameType | undefined
+  item: TitleSubTitleImagesType | undefined
 }
 
 const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
@@ -16,19 +19,31 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
         undefined
       )
 
+    const firstImageName = React.useMemo(() => {
+      if (!item) {
+        return
+      }
+
+      if (!item.images) {
+        return
+      }
+
+      if (!item.images[0]) {
+        return
+      }
+
+      return item.images[0].imageName
+    }, [item])
+
     React.useEffect(() => {
       const getPublicData = async () => {
-        if (!item) {
-          return
-        }
-
-        if (!item.imageName) {
+        if (!firstImageName) {
           return
         }
 
         const imageUrl = await getStorageImageURL(
           {
-            imageName: item.imageName,
+            imageName: firstImageName,
           }
         )
 
@@ -38,7 +53,7 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
       }
 
       getPublicData()
-    }, [item])
+    }, [firstImageName])
 
     const itemTitle = React.useMemo(() => {
       if (!item) {
@@ -67,7 +82,7 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
     return (
       <div className="flex flex-col md:flex-row lg:flex-row mb-8 items-center">
         <div className="flex w-full md:flex-2 lg:flex-2 lg:justify-center mr-4">
-          <div className="w-full aspect-w-16 aspect-h-9 bg-gray-200">
+          <div className="w-full aspect-w-16 aspect-h-9 bg-gray-200 mb-2 md:mb-0">
             {imageUrl && (
               <Image
                 alt="item-list-unit-image"
@@ -79,10 +94,10 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
           </div>
         </div>
         <div className="flex w-full md:flex-3 lg:flex-7 flex-col">
-          <div className="overflow-wrap-anywhere mb-1 text-white">
+          <div className="whitespace-pre-wrap overflow-wrap-anywhere mb-2 text-white">
             {itemTitle}
           </div>
-          <div className="overflow-wrap-anywhere text-white">
+          <div className="whitespace-pre-wrap overflow-wrap-anywhere text-white">
             {itemSubTitle}
           </div>
         </div>

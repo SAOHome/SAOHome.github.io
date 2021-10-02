@@ -1,3 +1,5 @@
+import type { TitleSubTitleImageNameType } from '@other-support/Types'
+
 export const notes = `正式站
 前台
 
@@ -38,3 +40,13 @@ export const projectSectionNames = [
   'Needs review',
   'Complete',
 ]
+
+export const items: Array<TitleSubTitleImageNameType> =
+  [
+    {
+      title: 'AloePocket',
+      subTitle: 'BBB',
+      imageName:
+        '/static/images/products/AloePocket/aloe000.jpg',
+    },
+  ]

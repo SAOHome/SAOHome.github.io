@@ -27,8 +27,6 @@ const Home: React.FC = () => {
       const publicData =
         await getPublicRealTimeData()
 
-      console.log('publicData: ', publicData)
-
       if (publicData.products) {
         setItems(publicData.products)
       }

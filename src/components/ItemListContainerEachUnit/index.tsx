@@ -47,8 +47,6 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
           }
         )
 
-        console.log('imageUrl: ', imageUrl)
-
         setImageUrl(imageUrl)
       }
 

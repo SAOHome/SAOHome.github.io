@@ -92,11 +92,21 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
           </div>
         </div>
         <div className="flex w-full md:flex-3 lg:flex-7 flex-col">
-          <div className="whitespace-pre-wrap overflow-wrap-anywhere mb-2 text-white">
+          <div className="whitespace-pre-wrap overflow-wrap-anywhere mb-2 text-2xl text-pink-300">
             {itemTitle}
           </div>
           <div className="whitespace-pre-wrap overflow-wrap-anywhere text-white">
             {itemSubTitle}
+          </div>
+          <div className="flex justify-end mt-2">
+            <button
+              className="text-yellow-300 hover:opacity-50"
+              onClick={() =>
+                console.log('show more')
+              }
+            >
+              More
+            </button>
           </div>
         </div>
       </div>

@@ -29,7 +29,11 @@ module.exports = {
      '60': '60rem',
      'full': '100%',
     },
-    extend: {},
+    extend: {
+      spacing: {
+         '180': '45rem',
+       }
+    },
   },
   variants: {
     extend: {},

@@ -2,7 +2,8 @@ import React from 'react'
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 
-import '@styles/globals.css'
+// import '@styles/globals.css'
+import 'tailwindcss/tailwind.css'
 
 import AppContent from '@containers/AppContent'
 import configureStore from '@redux-folder/configureStore'

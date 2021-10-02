@@ -45,7 +45,7 @@ const Home: React.FC = () => {
         <div className="flex flex-col justify-between min-h-60">
           <Banner />
           {/* <ModelItem item={modelItem} /> */}
-          {itemListContainer}
+          {/* {itemListContainer} */}
           <Footer />
         </div>
       </div>

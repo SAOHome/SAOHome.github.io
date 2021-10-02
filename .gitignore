@@ -66,9 +66,6 @@
 **/*.sublime-project
 **/*.sublime-workspace
 
-# next out
-**/out/
-
 # next .env
 **/.env
 

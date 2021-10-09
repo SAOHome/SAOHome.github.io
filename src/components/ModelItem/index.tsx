@@ -1,9 +1,38 @@
 import React from 'react'
+import Image from 'next/image'
+
 import classNames from 'classnames'
+import Slider from 'react-slick'
 
 import type { TitleSubTitleImagesType } from '@other-support/Types'
 
 import { getStorageImageURL } from '@firebase-folder/main'
+
+const settings = {
+  dots: true,
+  infinite: true,
+  centerMode: true,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+}
 
 interface ModelItemProps {
   item: TitleSubTitleImagesType | undefined
@@ -30,25 +59,23 @@ const ModelItem: React.FC<ModelItemProps> = ({
       const returnImageUrls = await Promise.all(
         item.images.map(
           each =>
-            new Promise<string>(
-              (resolve, reject) => {
-                const asyncFunc = async () => {
-                  if (!each.imageName) {
-                    resolve('')
-                    return
-                  }
-
-                  const imageUrl =
-                    await getStorageImageURL({
-                      imageName: each.imageName,
-                    })
-
-                  resolve(imageUrl)
+            new Promise<string>(resolve => {
+              const asyncFunc = async () => {
+                if (!each.imageName) {
+                  resolve('')
+                  return
                 }
 
-                asyncFunc()
+                const imageUrl =
+                  await getStorageImageURL({
+                    imageName: each.imageName,
+                  })
+
+                resolve(imageUrl)
               }
-            )
+
+              asyncFunc()
+            })
         )
       )
 
@@ -115,6 +142,26 @@ const ModelItem: React.FC<ModelItemProps> = ({
         </button>
         <div className="flex flex-1 flex-col overflow-y-scroll overflow-x-hidden">
           <div className="pr-12">
+            <div className="my-12">
+              <Slider {...settings}>
+                {imageUrls.map((each, index) => (
+                  <div
+                    key={`slide-image-${index}`}
+                    className="aspect-w-16 aspect-h-9 bg-green-50"
+                  >
+                    {each && (
+                      <Image
+                        alt="item-list-unit-image"
+                        className="w-full h-full object-cover"
+                        src={each}
+                        layout="fill"
+                      />
+                    )}
+                  </div>
+                ))}
+              </Slider>
+            </div>
+
             <div className="whitespace-pre-wrap overflow-wrap-anywhere mb-2 text-2xl text-pink-300">
               {itemTitle}
             </div>

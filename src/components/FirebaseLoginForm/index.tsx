@@ -75,11 +75,6 @@ const FirebaseLoginForm: React.FC = () => {
             'realTimeData not found'
           )
         }
-
-        console.log(
-          'realTimeData: ',
-          realTimeData
-        )
       } catch (error) {
         setErrorString('Login failed')
         await sleep(2000)

@@ -3,6 +3,8 @@ import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 
 import '@styles/globals.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import AppContent from '@containers/AppContent'
 import configureStore from '@redux-folder/configureStore'

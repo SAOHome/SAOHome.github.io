@@ -135,10 +135,6 @@ export const getStorageImageURL = async ({
 
     return imageUrl
   } catch (err) {
-    console.log(
-      'getStorageImageURL err: ',
-      err.message
-    )
     throw new Error('getStorageImageURL failed')
   }
 }

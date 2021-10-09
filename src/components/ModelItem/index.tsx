@@ -126,6 +126,10 @@ const ModelItem: React.FC<ModelItemProps> = ({
   }, [item])
 
   const imageContainer = React.useMemo(() => {
+    if (imageUrls.length < 1) {
+      return
+    }
+
     if (imageUrls.length > 1) {
       return (
         <Slider {...settings}>

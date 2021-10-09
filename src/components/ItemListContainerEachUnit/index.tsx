@@ -40,6 +40,8 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
 
     React.useEffect(() => {
       const getPublicData = async () => {
+        setImageUrl(undefined)
+
         if (!firstImageName) {
           return
         }

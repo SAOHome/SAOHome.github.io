@@ -125,7 +125,7 @@ export const getStorageImageURL = async ({
   imageName,
 }: {
   imageName: string
-}): Promise<string> => {
+}): Promise<string | undefined> => {
   try {
     const storage = getStorage()
 
@@ -134,7 +134,7 @@ export const getStorageImageURL = async ({
     )
 
     return imageUrl
-  } catch (err) {
-    throw new Error('getStorageImageURL failed')
+  } catch {
+    // throw new Error('getStorageImageURL failed')
   }
 }

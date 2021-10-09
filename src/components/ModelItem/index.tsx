@@ -44,10 +44,12 @@ const ModelItem: React.FC<ModelItemProps> = ({
   buttonPress,
 }) => {
   const [imageUrls, setImageUrls] =
-    React.useState<string[]>([])
+    React.useState<(string | undefined)[]>([])
 
   React.useEffect(() => {
     const getPublicData = async () => {
+      setImageUrls([])
+
       if (!item) {
         return ''
       }
@@ -59,23 +61,25 @@ const ModelItem: React.FC<ModelItemProps> = ({
       const returnImageUrls = await Promise.all(
         item.images.map(
           each =>
-            new Promise<string>(resolve => {
-              const asyncFunc = async () => {
-                if (!each.imageName) {
-                  resolve('')
-                  return
+            new Promise<string | undefined>(
+              resolve => {
+                const asyncFunc = async () => {
+                  if (!each.imageName) {
+                    resolve(undefined)
+                    return
+                  }
+
+                  const imageUrl =
+                    await getStorageImageURL({
+                      imageName: each.imageName,
+                    })
+
+                  resolve(imageUrl)
                 }
 
-                const imageUrl =
-                  await getStorageImageURL({
-                    imageName: each.imageName,
-                  })
-
-                resolve(imageUrl)
+                asyncFunc()
               }
-
-              asyncFunc()
-            })
+            )
         )
       )
 
@@ -142,7 +146,7 @@ const ModelItem: React.FC<ModelItemProps> = ({
         </button>
         <div className="flex flex-1 flex-col overflow-y-scroll overflow-x-hidden">
           <div className="pr-12">
-            <div className="my-12">
+            <div className="my-12 min-h-4 md:min-h-9 lg:min-h-6">
               <Slider {...settings}>
                 {imageUrls.map((each, index) => (
                   <div

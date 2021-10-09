@@ -10,10 +10,13 @@ import { getStorageImageURL } from '@firebase-folder/main'
 
 interface ItemListContainerEachUnitProps {
   item: TitleSubTitleImagesType | undefined
+  showItem: (
+    item: TitleSubTitleImagesType | undefined
+  ) => void
 }
 
 const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
-  ({ item }) => {
+  ({ item, showItem }) => {
     const [imageUrl, setImageUrl] =
       React.useState<string | undefined>(
         undefined
@@ -101,9 +104,7 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
           <div className="flex justify-end mt-2">
             <button
               className="text-yellow-300 hover:opacity-50"
-              onClick={() =>
-                console.log('show more')
-              }
+              onClick={() => showItem(item)}
             >
               More
             </button>

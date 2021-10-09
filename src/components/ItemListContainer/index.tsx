@@ -9,10 +9,13 @@ import ItemListContainerEachUnit from '@components/ItemListContainerEachUnit'
 
 interface ItemListContainerProps {
   items: TitleSubTitleImagesListType | undefined
+  showItem: (
+    item: TitleSubTitleImagesType | undefined
+  ) => void
 }
 
 const ItemListContainer: React.FC<ItemListContainerProps> =
-  ({ items }) => {
+  ({ items, showItem }) => {
     const itemsContainer = React.useMemo(() => {
       if (!items) {
         return
@@ -28,6 +31,7 @@ const ItemListContainer: React.FC<ItemListContainerProps> =
               <ItemListContainerEachUnit
                 key={`item-list-unit-${index}`}
                 item={item}
+                showItem={showItem}
               />
             )
           )}

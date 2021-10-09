@@ -3,6 +3,8 @@ import classNames from 'classnames'
 
 import type { TitleSubTitleImagesType } from '@other-support/Types'
 
+import { getStorageImageURL } from '@firebase-folder/main'
+
 interface ModelItemProps {
   item: TitleSubTitleImagesType | undefined
   buttonPress?: () => void
@@ -12,9 +14,49 @@ const ModelItem: React.FC<ModelItemProps> = ({
   item,
   buttonPress,
 }) => {
-  if (!item) {
-    return <></>
-  }
+  const [imageUrls, setImageUrls] =
+    React.useState<string[]>([])
+
+  React.useEffect(() => {
+    const getPublicData = async () => {
+      if (!item) {
+        return ''
+      }
+
+      if (!item.images) {
+        return ''
+      }
+
+      const returnImageUrls = await Promise.all(
+        item.images.map(
+          each =>
+            new Promise<string>(
+              (resolve, reject) => {
+                const asyncFunc = async () => {
+                  if (!each.imageName) {
+                    resolve('')
+                    return
+                  }
+
+                  const imageUrl =
+                    await getStorageImageURL({
+                      imageName: each.imageName,
+                    })
+
+                  resolve(imageUrl)
+                }
+
+                asyncFunc()
+              }
+            )
+        )
+      )
+
+      setImageUrls(returnImageUrls)
+    }
+
+    getPublicData()
+  }, [item])
 
   const itemTitle = React.useMemo(() => {
     if (!item) {
@@ -51,6 +93,10 @@ const ModelItem: React.FC<ModelItemProps> = ({
 
     return item.text
   }, [item])
+
+  if (!item) {
+    return <></>
+  }
 
   return (
     <div

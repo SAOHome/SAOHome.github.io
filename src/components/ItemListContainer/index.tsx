@@ -37,7 +37,7 @@ const ItemListContainer: React.FC<ItemListContainerProps> =
           )}
         </div>
       )
-    }, [items])
+    }, [items, showItem])
 
     return (
       <div className="flex flex-col">

@@ -13,14 +13,6 @@ import type {
 
 import { getPublicRealTimeData } from '@firebase-folder/main'
 
-const tempTitleSubTitleImages: TitleSubTitleImagesType =
-  {
-    title: 'tempTitle',
-    subTitle: 'tempSubTitle',
-    text: 'tempText',
-    images: [],
-  }
-
 const Home: React.FC = () => {
   const [items, setItems] =
     React.useState<TitleSubTitleImagesListType>(
@@ -31,16 +23,6 @@ const Home: React.FC = () => {
     React.useState<
       TitleSubTitleImagesType | undefined
     >(undefined)
-
-  // React.useEffect(() => {
-  //   if (modelItem) {
-  //     return
-  //   }
-
-  //   setTimeout(() => {
-  //     setModelItem(tempTitleSubTitleImages)
-  //   }, 3000)
-  // }, [modelItem])
 
   React.useEffect(() => {
     const getPublicData = async () => {

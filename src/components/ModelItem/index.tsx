@@ -125,6 +125,43 @@ const ModelItem: React.FC<ModelItemProps> = ({
     return item.text
   }, [item])
 
+  const imageContainer = React.useMemo(() => {
+    if (imageUrls.length > 1) {
+      return (
+        <Slider {...settings}>
+          {imageUrls.map((each, index) => (
+            <div
+              key={`slide-image-${index}`}
+              className="aspect-w-16 aspect-h-9 bg-green-50"
+            >
+              {each && (
+                <Image
+                  alt="item-list-unit-image"
+                  className="w-full h-full object-cover"
+                  src={each}
+                  layout="fill"
+                />
+              )}
+            </div>
+          ))}
+        </Slider>
+      )
+    }
+
+    return (
+      <div className="aspect-w-16 aspect-h-9 bg-green-50">
+        {imageUrls[0] && (
+          <Image
+            alt="item-list-unit-image"
+            className="w-full h-full object-cover"
+            src={imageUrls[0]}
+            layout="fill"
+          />
+        )}
+      </div>
+    )
+  }, [imageUrls])
+
   if (!item) {
     return <></>
   }
@@ -147,23 +184,7 @@ const ModelItem: React.FC<ModelItemProps> = ({
         <div className="flex flex-1 flex-col overflow-y-scroll overflow-x-hidden">
           <div className="pr-12">
             <div className="my-12 min-h-4 md:min-h-9 lg:min-h-6">
-              <Slider {...settings}>
-                {imageUrls.map((each, index) => (
-                  <div
-                    key={`slide-image-${index}`}
-                    className="aspect-w-16 aspect-h-9 bg-green-50"
-                  >
-                    {each && (
-                      <Image
-                        alt="item-list-unit-image"
-                        className="w-full h-full object-cover"
-                        src={each}
-                        layout="fill"
-                      />
-                    )}
-                  </div>
-                ))}
-              </Slider>
+              {imageContainer}
             </div>
 
             <div className="whitespace-pre-wrap overflow-wrap-anywhere mb-2 text-2xl text-pink-300">

@@ -85,7 +85,7 @@ const ItemListContainerEachUnit: React.FC<ItemListContainerEachUnitProps> =
     return (
       <div className="flex flex-col md:flex-row lg:flex-row mb-8 items-center">
         <div className="flex w-full md:flex-2 lg:flex-2 lg:justify-center mr-4">
-          <div className="w-full aspect-w-16 aspect-h-9 bg-gray-200 mb-2 md:mb-0">
+          <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 mb-2 md:mb-0">
             {imageUrl && (
               <Image
                 alt="item-list-unit-image"

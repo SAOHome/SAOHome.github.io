@@ -136,7 +136,7 @@ const ModelItem: React.FC<ModelItemProps> = ({
           {imageUrls.map((each, index) => (
             <div
               key={`slide-image-${index}`}
-              className="aspect-w-16 aspect-h-9 bg-green-50"
+              className="aspect-w-1 aspect-h-1 border"
             >
               {each && (
                 <Image
@@ -153,7 +153,7 @@ const ModelItem: React.FC<ModelItemProps> = ({
     }
 
     return (
-      <div className="aspect-w-16 aspect-h-9 bg-green-50">
+      <div className="aspect-w-1 aspect-h-1">
         {imageUrls[0] && (
           <Image
             alt="item-list-unit-image"
